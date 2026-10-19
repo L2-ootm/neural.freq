@@ -1,0 +1,8 @@
+neural.freq
+Third-party attributions
+
+- Pink noise: Paul Kellet's "refined" seven-stage filter coefficients (published on the music-dsp list).
+- Brown noise and all soundscape layers: original implementations in src/engine/dsp.
+- Runtime dependency: React and React DOM (MIT).
+
+"neural.freq" and "L2 Systems" are names of their owner and are not licensed by the code license.
