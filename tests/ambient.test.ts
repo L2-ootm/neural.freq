@@ -31,11 +31,13 @@ describe('soundscape layers', () => {
         const { l, r } = gen(id, 12, sr);
         let s = 0;
         let peak = 0;
+        let finite = true;
         for (let i = 0; i < l.length; i++) {
-          expect(Number.isFinite(l[i]!) && Number.isFinite(r[i]!)).toBe(true);
+          if (!(Number.isFinite(l[i]!) && Number.isFinite(r[i]!))) finite = false;
           s += l[i]! * l[i]! + r[i]! * r[i]!;
           peak = Math.max(peak, Math.abs(l[i]!), Math.abs(r[i]!));
         }
+        expect(finite, `${id}@${sr} finite`).toBe(true);
         const rms = Math.sqrt(s / (2 * l.length));
         expect(rms, `${id}@${sr} rms`).toBeGreaterThan(0.02);
         expect(peak, `${id}@${sr} peak`).toBeLessThan(40);
